@@ -1,15 +1,16 @@
 package logic;
 
 import entity.Driver;
+import entity.Gland;
 import main.Main;
 import util.FileUtil;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class LogicDriver {
+public class LogicGland {
     public static void addInfo() {
-        System.out.println("Nhập số lượng lái xe cần thêm:");
+        System.out.println("Nhập số lượng tuyến cần thêm:");
         int quantity = 0;
         do {
             try {
@@ -17,28 +18,28 @@ public class LogicDriver {
                 if (quantity > 0) {
                     break;
                 }
-                System.out.println("Số người lái xe phải lớn hơn 0 nhập lại:");
+                System.out.println("Số người tuyến phải lớn hơn 0 nhập lại:");
             } catch (InputMismatchException e) {
-                System.out.println("Số người lái xe phải là số nguyên nhập lại:");
+                System.out.println("Số người tuyến phải là số nguyên nhập lại:");
             }
         } while (true);
         for (int i = 0; i < quantity; ++i) {
-            Driver driver = new Driver();
-            driver.inputInfo();
-            Main.drivers.add(driver);
-            FileUtil.writeDataToFile(Main.drivers,"driverdata.txt");
+            Gland gland = new Gland();
+            gland.inputInfo();
+            Main.glands.add(gland);
+            FileUtil.writeDataToFile(Main.glands,"glandsdata.txt");
             showInfo();
         }
     }
 
     public static void showInfo() {
-        for (Driver driver : Main.drivers) {
-            System.out.println(driver);
+        for (Gland gland : Main.glands) {
+            System.out.println(gland);
         }
     }
     public static boolean isempty() {
-        for (Driver driver :Main.drivers) {
-            if (driver != null) {
+        for (Gland gland:Main.glands) {
+            if (gland != null) {
                 return false;
             }
         }

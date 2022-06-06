@@ -2,10 +2,11 @@ package entity;
 
 import impl.InfoImpl;
 
+import java.io.Serializable;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Driver extends Info {
+public class Driver extends Info implements Serializable{
     private int id;
     private static int autoId = 10000;
     private String level;
@@ -34,7 +35,7 @@ public class Driver extends Info {
         System.out.println("Mã lái xe là :" + this.getId());
         super.inputInfo();
         System.out.println("Trình độ người lái xe là :(1.Loại A , 2.Loại B , 3.Loại C ,4.Loại D , 5.Loại E , 6.Loại F)");
-        int types =0;
+        int types = 0;
         do {
             try {
                 types = new Scanner(System.in).nextInt();
@@ -46,13 +47,25 @@ public class Driver extends Info {
                 System.out.println("Trình độ phải chọn từ 1 đến 6 nhập lại:");
             }
         } while (true);
-        switch (types){
-            case 1:this.setLevel(Driver.LA);
-            case 2:this.setLevel(Driver.LB);
-            case 3:this.setLevel(Driver.LC);
-            case 4:this.setLevel(Driver.LD);
-            case 5:this.setLevel(Driver.LE);
-            case 6:this.setLevel(Driver.LF);
+        switch (types) {
+            case 1:
+                this.setLevel(Driver.LA);
+                break;
+            case 2:
+                this.setLevel(Driver.LB);
+                break;
+            case 3:
+                this.setLevel(Driver.LC);
+                break;
+            case 4:
+                this.setLevel(Driver.LD);
+                break;
+            case 5:
+                this.setLevel(Driver.LE);
+                break;
+            case 6:
+                this.setLevel(Driver.LF);
+                break;
         }
     }
 

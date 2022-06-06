@@ -2,10 +2,11 @@ package entity;
 
 import impl.InfoImpl;
 
+import java.io.Serializable;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Buses implements InfoImpl {
+public class Gland implements InfoImpl, Serializable {
     private int id;
     private static int autoId = 100;
     private int distance;
@@ -62,5 +63,6 @@ public class Buses implements InfoImpl {
                 ", numberStop=" + numberStop +
                 '}';
     }
+
 
 }

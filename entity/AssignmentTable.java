@@ -1,10 +1,19 @@
 package entity;
 
-import java.util.Arrays;
+import main.Main;
 
-public class AssignmentTable {
+import java.io.Serializable;
+import java.util.Collections;
+import java.util.LinkedList;
+
+public class AssignmentTable implements Comparable<AssignmentTable>, Serializable {
     private Driver driver;
-    private Assignment[] assignments;
+    private LinkedList<Assignment> assignments;
+
+    public AssignmentTable(Driver driver, LinkedList<Assignment> assignments) {
+        this.driver = driver;
+        this.assignments = assignments;
+    }
 
     public Driver getDriver() {
         return driver;
@@ -14,11 +23,11 @@ public class AssignmentTable {
         this.driver = driver;
     }
 
-    public Assignment[] getAssignments() {
+    public LinkedList<Assignment> getAssignments() {
         return assignments;
     }
 
-    public void setAssignments(Assignment[] assignments) {
+    public void setAssignments(LinkedList<Assignment> assignments) {
         this.assignments = assignments;
     }
 
@@ -26,23 +35,26 @@ public class AssignmentTable {
     public String toString() {
         return "AssignmentTable{" +
                 "driver=" + driver +
-                ", assignments=" + Arrays.toString(assignments) +
+                ", assignments=" + assignments +
                 '}';
     }
 
-    public int sumGland() {
-        if (AssignmentTable.isNullOrEmpty(assignments)) {
+    public int compareTo(AssignmentTable assignmentTable) {
+        return this.getDriver().getFullName().compareTo(assignmentTable.getDriver().getFullName());
+    }
+
+    public int getDistance() {
+        if (isEmptyOrNull(assignments.toArray())) {
             return 0;
         }
         int sum = 0;
-        for (int i = 0; i < assignments.length; ++i) {
-            sum += assignments[i].getBuses().getDistance();
-
+        for (Assignment assignment : assignments) {
+            sum +=assignment.getQuantity()*assignment.getGland().getDistance();
         }
         return sum;
     }
 
-    public static boolean isNullOrEmpty(Object[] obj) {
-        return obj == null && obj.length == 0;
+    public static boolean isEmptyOrNull(Object[] obj) {
+        return obj.length == 0 && obj == null;
     }
 }

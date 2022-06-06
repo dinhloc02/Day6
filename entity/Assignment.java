@@ -1,15 +1,20 @@
 package entity;
 
 public class Assignment {
-    private Buses buses;
+    private Gland gland;
     private int quantity;
 
-    public Buses getBuses() {
-        return buses;
+    public Assignment(Gland gland, int quantity) {
+        this.gland = gland;
+        this.quantity = quantity;
     }
 
-    public void setBuses(Buses buses) {
-        this.buses = buses;
+    public Gland getGland() {
+        return gland;
+    }
+
+    public void setGland(Gland gland) {
+        this.gland = gland;
     }
 
     public int getQuantity() {
@@ -23,7 +28,7 @@ public class Assignment {
     @Override
     public String toString() {
         return "Assignment{" +
-                "buses=" + buses +
+                "buses=" + gland +
                 ", quantity=" + quantity +
                 '}';
     }
